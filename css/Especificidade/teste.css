@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+div { color: blue; } /* Seleciona todos os elementos div */
+p { color: red; } /* Seleciona todos os elementos p */
+.intro { color: green; } /* Seleciona todos os elementos div, p e com a classe "intro" */
+#container { color: purple; } /* Seleciona o elemento com id "container" */
+#container p { color: yellow; } /* Seleciona o parágrafo dentro do elemento com id "container" */
+#container .intro { color: orange; } /* Seleciona o elemento com classe "intro" dentro do elemento com id "container" */
+#container .intro p { color: pink; } /* Seleciona o parágrafo com a classe "intro" dentro do elemento com id "container" */
+
+/* Testando a especificidade */
+/* A regra mais específica deve prevalecer */
+/*Quanto mais IDs (#algo) e classes (.algo) o seletor tiver, mais forte*/

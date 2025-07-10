@@ -8,53 +8,129 @@ body {
   font-family: 'Playfair Display', sans-serif; 
   font-size: 16px;
   line-height: 1.6;
-  background-color: #f9f9f9;
+  background-color: #fceedd;
   color: #d46306;
-  padding: 20px;
+  text-align: justify; /* Justifica o texto */
+}
+
+#cabecalho h1::after {
+  content: ' 🍽️';
+  margin-left: 10px;
+  font-size: 1.2em; /* tamanho um pouco maior que o texto */
+  vertical-align: middle;
+}
+
+nav {
+  text-align: center; /* Centraliza os botões */
+  margin-top: 15px;
+}
+
+nav a {
+  display: inline-block; /* Exibe como bloco */
+  padding: 10px 20px;
+  background-color: #d2691e;
+  color: white;
+  text-decoration: none; /* remove o sublinhado */
+  border-radius: 5px;   /* Borda arredondada */
+  margin-right: 10px; /* espaço entre os botões */
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+nav a:hover {
+  background-color: #a0522d; /* tom mais escuro no hover */
+}
+
+aside a {
+  margin: 0 8px;
+  position: relative;
+  text-decoration: underline;
+  color: #d2691e; 
+  transition: color 0.3s ease;
+}
+
+aside a:not(:last-child)::after { /* adiciona barra vertical entre os links, exceto no último */
+  content: "|";
+  margin-left: 8px; /* espaço entre os links */
+  color: #d2691e;
+}
+
+a:hover {
+  color: #555; /* muda cor quando o mouse passa por cima */
+}
+
+.container {
+  max-width: 500px;       /* Largura máxima */
+  margin: 0 auto;          /* Centraliza horizontalmente */           
+}
+
+img {
+  display: block;
+  margin: 0 auto;
 }
 
 h1 {
-  font-family: 'Playfair Display', serif; 
-  font-size: 30px;
-  line-height: 1.6;
-  background-color: #f8f6f3;
-  color: #d46306;
-  padding: 20px;
-  margin-bottom: 20px
+  font-size: 45px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-h2 {
-  font-family: 'Playfair Display', serif; 
+.container h2 {
   font-size: 25px;
-  line-height: 1.6;
-  background-color: #f8f6f3;
-  color: #d46306;
-  padding: 20px;
   margin-bottom: 20px
 }
 
-h3 {
-  font-family: 'Playfair Display', serif; 
+
+.container h3 {
   font-size: 22px;
-  line-height: 1.6;
-  background-color: #f8f6f3;
-  color: #d46306;
-  padding: 20px;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-ul, ol {
-  font-family: 'Playfair Display', serif; 
+article a {
+  display: inline-block; /* Exibe como bloco */
+  padding: 10px 20px;
+  background-color: #d2691e;
+  color: white;
+  border-radius: 4px; /* Borda arredondada */
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+article a:hover { /*efeito quando o mouse estiver em cima*/
+  background-color: #a0522d;
+}
+
+
+.container ul,
+.container ol {
   font-size: 20px;
   line-height: 1;
-  background-color: #f8f6f3;
-  color: #d46306;
-  padding: 20px;
 }
-.container {
-  max-width: 1200px;       /* Largura máxima */
-  margin: 0 auto;          /* Centraliza horizontalmente */
-  padding: 50px;           /* Espaçamento interno */
-  text-align: center;       /* Centraliza o texto */
+
+article {
+  margin-bottom: 30px; /* Espaçamento */
+  border: 2px solid #d46306; /* Borda */
+  border-radius: 8px; /* Borda arredondada */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: center;
+  
 }
+
+article p {
+  text-align: justify; /* Justifica o texto */
+}
+
+
+input:focus, textarea:focus, select:focus {
+  border: 1px solid #d2691e;
+  box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
+  outline: none; /* remove a borda azul padrão do navegador */
+}
+
+
+#rodape {
+  text-align: center;
+}
+
 
