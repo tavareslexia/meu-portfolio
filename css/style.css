@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* Fonte padrão, cor do texto e cor de fundo */
+body {
+  font-family: 'Playfair Display', sans-serif; 
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #d46306;
+  padding: 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif; 
+  font-size: 30px;
+  line-height: 1.6;
+  background-color: #f8f6f3;
+  color: #d46306;
+  padding: 20px;
+  margin-bottom: 20px
+}
+
+h2 {
+  font-family: 'Playfair Display', serif; 
+  font-size: 25px;
+  line-height: 1.6;
+  background-color: #f8f6f3;
+  color: #d46306;
+  padding: 20px;
+  margin-bottom: 20px
+}
+
+h3 {
+  font-family: 'Playfair Display', serif; 
+  font-size: 22px;
+  line-height: 1.6;
+  background-color: #f8f6f3;
+  color: #d46306;
+  padding: 20px;
+  margin-bottom: 20px
+}
+
+ul, ol {
+  font-family: 'Playfair Display', serif; 
+  font-size: 20px;
+  line-height: 1;
+  background-color: #f8f6f3;
+  color: #d46306;
+  padding: 20px;
+}
+.container {
+  max-width: 1200px;       /* Largura máxima */
+  margin: 0 auto;          /* Centraliza horizontalmente */
+  padding: 50px;           /* Espaçamento interno */
+  text-align: center;       /* Centraliza o texto */
+}
+
