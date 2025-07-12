@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebra de linha */
+  gap: 16px; /* Espaço entre os cards */
+  justify-content: center;
+  padding: 16px;
+}
+
+.card section {
+  display: flex;
+  flex: 1;
+  text-align: center; /* Centraliza o texto */
+  flex-direction: column; /* organiza os elementos em coluna */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background-color: #fff;
+  padding: 16px;
+}
+
+.card-content {
+  flex-grow: 2; /* Permite que o conteúdo ocupe o espaço restante */
+}
+
+.card-content p{
+    text-align: justify; /* Justifica o texto */
+}
+
+.card img {
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do card */
+  height: auto;
+  margin-bottom: 8px;
+}
+
+button {
+  background-color: #d46306; /* Cor de fundo do botão */
+  color: #fceedd; /* Cor do texto do botão */
+  padding: 8px 16px; /* Preenchimento interno do botão */
+  border: none; /* Remove borda padrão */
+  border-radius: 4px; /* Borda arredondada */
+  cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+  width: fit-content; /* Ajusta o tamanho do botão ao conteúdo */
+  margin: 0 auto; /* Centraliza o botão */
+  margin-bottom: 5px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Três colunas de tamanho igual */
+  gap: 16px; /* Espaço entre os cards */
+}
+
+

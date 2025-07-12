@@ -11,25 +11,66 @@ body {
   background-color: #fceedd;
   color: #d46306;
   text-align: justify; /* Justifica o texto */
+  padding: 0; /* Remove o preenchimento */
 }
 
-#cabecalho h1::after {
-  content: ' 🍽️';
-  margin-left: 10px;
-  font-size: 1.2em; /* tamanho um pouco maior que o texto */
-  vertical-align: middle;
+header img {
+  width: 125px; /* Largura da imagem */
+  height: 125px; /* Altura */
+  border-radius: 50%; /* Borda arredondada */
 }
 
-nav {
-  text-align: center; /* Centraliza os botões */
-  margin-top: 15px;
+
+header {
+  display: flex;
+  justify-content: space-between; /* Espaço entre os itens */
+  align-items: center; /* Alinha verticalmente */
+  background-color: #d46306; /* Cor de fundo do cabeçalho */
+  color: #fceedd; /* Cor do texto do cabeçalho */
+  padding: 10px 50px; /* Preenchimento interno */
+  flex-wrap: wrap; /* Permite quebra de linha */
 }
 
-nav a {
+nav ul {
+  list-style: none; /* Remove bolinhas */
+  display: flex;    /* Coloca os itens lado a lado */
+  padding: 0;       /* Remove espaçamento interno */
+  margin: 0;        /* Remove espaçamento externo */
+}
+
+nav li {
+  margin-right: 10px; /* Espaço entre os botões */
+}
+
+
+header nav {
+  display:flex;
+  flex-wrap: wrap; /* Permite quebra de linha */
+  justify-content: center; /* Centraliza os links */
+}
+
+button {
+  all: unset;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* Mantém espaçamento entre os itens */
+  gap: 20px; /* Espaço entre os itens */
+}
+
+.card > * {
+  flex: 1; /* Ocupa espaço igual */
+}
+
+
+nav a, button {
   display: inline-block; /* Exibe como bloco */
   padding: 10px 20px;
-  background-color: #d2691e;
-  color: white;
+  background-color: #fceedd; /* Cor de fundo dos links */
+  color: #d46306; /* Cor do texto dos links */
   text-decoration: none; /* remove o sublinhado */
   border-radius: 5px;   /* Borda arredondada */
   margin-right: 10px; /* espaço entre os botões */
@@ -37,7 +78,8 @@ nav a {
   margin-top: 10px;
 }
 
-nav a:hover {
+
+nav a:hover, button:hover {
   background-color: #a0522d; /* tom mais escuro no hover */
 }
 
@@ -45,14 +87,16 @@ aside a {
   margin: 0 8px;
   position: relative;
   text-decoration: underline;
-  color: #d2691e; 
+  color: #fceedd; 
   transition: color 0.3s ease;
 }
 
-aside a:not(:last-child)::after { /* adiciona barra vertical entre os links, exceto no último */
-  content: "|";
-  margin-left: 8px; /* espaço entre os links */
-  color: #d2691e;
+aside{
+  display: flex;
+  flex-direction: column; /* Organiza os links em coluna */
+  align-items: center; /* Centraliza os links */
+  padding: 20px;
+  background-color: #d46306; /* Cor de fundo do aside */
 }
 
 a:hover {
@@ -60,20 +104,15 @@ a:hover {
 }
 
 .container {
-  max-width: 500px;       /* Largura máxima */
+  max-width: 1200px;       /* Largura máxima */
   margin: 0 auto;          /* Centraliza horizontalmente */           
 }
 
-img {
+.container img {
   display: block;
   margin: 0 auto;
 }
 
-h1 {
-  font-size: 45px;
-  margin-bottom: 20px;
-  text-align: center;
-}
 
 .container h2 {
   font-size: 25px;
@@ -133,4 +172,32 @@ input:focus, textarea:focus, select:focus {
   text-align: center;
 }
 
+body{
+  display:grid;
+  grid-template-columns: 1fr 4fr; /* duas colunas, a primeira com o dobro da largura da segunda */
+  grid-template-areas: 
+    "header header"
+    "aside main"
+    "footer footer";
+}
 
+aside h2{
+  color: #fceedd;
+}
+
+header {
+  grid-area: header;
+}
+main {
+  grid-area: main;
+  padding: 20px;
+} 
+aside {
+  grid-area: aside;
+  padding: 20px;
+}
+
+footer {
+  grid-area: footer;
+  padding: 10px 0; /* Preenchimento interno */
+}
