@@ -3,13 +3,27 @@
 *::after {
   box-sizing: border-box;
 }
+
+:root {
+  --primary-color: #d46306; /* Cor primária */
+  --secondary-color: #fceedd; /* Cor secundária */
+  --accent-color: #a0522d; /* Cor de destaque */
+  --text-color: #555; /* Cor do texto */
+
+  --background-color-dark: #121212; /* Cor de fundo escuro */
+  --text-color-dark: #e0e0e0; /* Cor do texto escuro */
+  --secondary-color-dark: #1e1e1e; /* Cor secundária escura */
+  --primary-color-dark: #bb86fc; /* Cor primária escura */
+  --accent-color-dark: #03dac6; /* Cor de destaque escura */
+}
+
 /* Fonte padrão, cor do texto e cor de fundo */
 body {
   font-family: 'Playfair Display', sans-serif; 
   font-size: 16px;
   line-height: 1.6;
-  background-color: #fceedd;
-  color: #d46306;
+  background-color: var(--secondary-color); /* Cor de fundo */
+  color: var(--primary-color); /* Cor do texto */
   text-align: justify; /* Justifica o texto */
   padding: 0; /* Remove o preenchimento */
 }
@@ -18,18 +32,11 @@ header img {
   width: 125px; /* Largura da imagem */
   height: 125px; /* Altura */
   border-radius: 50%; /* Borda arredondada */
+  display: block; /* Exibe como bloco */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 
-header {
-  display: flex;
-  justify-content: space-between; /* Espaço entre os itens */
-  align-items: center; /* Alinha verticalmente */
-  background-color: #d46306; /* Cor de fundo do cabeçalho */
-  color: #fceedd; /* Cor do texto do cabeçalho */
-  padding: 10px 50px; /* Preenchimento interno */
-  flex-wrap: wrap; /* Permite quebra de linha */
-}
 
 nav ul {
   list-style: none; /* Remove bolinhas */
@@ -55,10 +62,11 @@ button {
 
 .card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between; /* Mantém espaçamento entre os itens */
   gap: 20px; /* Espaço entre os itens */
+  align-items: stretch;
 }
 
 .card > * {
@@ -69,8 +77,8 @@ button {
 nav a, button {
   display: inline-block; /* Exibe como bloco */
   padding: 10px 20px;
-  background-color: #fceedd; /* Cor de fundo dos links */
-  color: #d46306; /* Cor do texto dos links */
+  background-color: var(--secondary-color); /* Cor de fundo dos links */
+  color: var(--primary-color); /* Cor do texto dos links */
   text-decoration: none; /* remove o sublinhado */
   border-radius: 5px;   /* Borda arredondada */
   margin-right: 10px; /* espaço entre os botões */
@@ -80,14 +88,14 @@ nav a, button {
 
 
 nav a:hover, button:hover {
-  background-color: #a0522d; /* tom mais escuro no hover */
+  background-color: var(--primary-color); /* tom mais escuro no hover */
 }
 
 aside a {
   margin: 0 8px;
   position: relative;
   text-decoration: underline;
-  color: #fceedd; 
+  color: var(--secondary-color); 
   transition: color 0.3s ease;
 }
 
@@ -96,11 +104,11 @@ aside{
   flex-direction: column; /* Organiza os links em coluna */
   align-items: center; /* Centraliza os links */
   padding: 20px;
-  background-color: #d46306; /* Cor de fundo do aside */
+  background-color:   var(--primary-color); /* Cor de fundo do aside */
 }
 
 a:hover {
-  color: #555; /* muda cor quando o mouse passa por cima */
+  color: var(--text-color); /* muda cor quando o mouse passa por cima */
 }
 
 .container {
@@ -129,7 +137,7 @@ a:hover {
 article a {
   display: inline-block; /* Exibe como bloco */
   padding: 10px 20px;
-  background-color: #d2691e;
+  background-color: var(--accent-color);
   color: white;
   border-radius: 4px; /* Borda arredondada */
   text-decoration: none;
@@ -137,7 +145,7 @@ article a {
 }
 
 article a:hover { /*efeito quando o mouse estiver em cima*/
-  background-color: #a0522d;
+  background-color: var(--accent-color);
 }
 
 
@@ -149,7 +157,7 @@ article a:hover { /*efeito quando o mouse estiver em cima*/
 
 article {
   margin-bottom: 30px; /* Espaçamento */
-  border: 2px solid #d46306; /* Borda */
+  border: 2px solid var(--primary-color); /* Borda */
   border-radius: 8px; /* Borda arredondada */
   padding: 10px 20px; /* Espaçamento interno */
   text-align: center;
@@ -167,37 +175,90 @@ input:focus, textarea:focus, select:focus {
   outline: none; /* remove a borda azul padrão do navegador */
 }
 
+.card article {
+  flex: 1; 
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+}
 
 #rodape {
   text-align: center;
 }
 
-body{
-  display:grid;
-  grid-template-columns: 1fr 4fr; /* duas colunas, a primeira com o dobro da largura da segunda */
-  grid-template-areas: 
-    "header header"
-    "aside main"
-    "footer footer";
-}
 
 aside h2{
   color: #fceedd;
 }
 
-header {
-  grid-area: header;
-}
-main {
-  grid-area: main;
-  padding: 20px;
-} 
-aside {
-  grid-area: aside;
-  padding: 20px;
+
+
+@media (min-width: 800px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 4fr; /* duas colunas */
+    grid-template-areas: 
+      "header header"
+      "aside main"
+      "footer footer";
+  } 
+  header {
+    grid-area: header;
+  }
+  main {
+    grid-area: main;
+    padding: 20px;
+  } 
+  aside {
+    grid-area: aside;
+    padding: 20px;
+  }
+  footer {
+    grid-area: footer;
+    padding: 10px 0; /* Preenchimento interno */
+  }
+  
+  .card {
+  display: flex;
+  flex-direction: row; /* Organiza os filhos em linha */
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch; /* Faz os filhos esticarem igualmente */
 }
 
-footer {
-  grid-area: footer;
-  padding: 10px 0; /* Preenchimento interno */
+.card article {
+  flex: 1 1 300px;
+  max-width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+  }
+
+  nav a, button {
+    background-color: var(--secondary-color-dark);
+    color: var(--primary-color-dark);
+  }
+
+  aside {
+    background-color: var(--primary-color-dark);
+  }
+
+  article {
+    background-color: var(--secondary-color-dark);
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border: 1px solid var(--accent-color-dark);
+    box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
+  }
 }

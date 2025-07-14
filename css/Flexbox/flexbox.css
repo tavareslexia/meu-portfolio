@@ -25,7 +25,7 @@
 }
 
 .card-content {
-  flex-grow: 2; /* Permite que o conteúdo ocupe o espaço restante */
+  flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante */
 }
 
 .card-content p{
