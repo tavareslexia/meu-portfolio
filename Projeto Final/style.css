@@ -1,0 +1,411 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none; /* Remove default text decoration */
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+:root {
+  --roxo-cabecalho: #ebe6ee;
+  --roxo-fundo-1: #270142;
+  --roxo-fundo-2: #370363;
+  --roxo-fundo-3: #3d056e;
+  --roxo-fundo-4: #4f0e91;
+  --roxo-texto-claro: #d3b5ff;
+  --roxo-texto-escuro: #1e0033;
+  --roxo-botao-hover: #9f63e6;
+}
+
+/* Estilos globais */
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--roxo-fundo-1);
+  color: var(--roxo-texto-claro);
+  font-family: "Segoe UI", sans-serif;
+  width: 100%; /* Largura total */
+  height: 100vh; /* Altura total da viewport */
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  color: var(--roxo-texto-escuro);
+  text-decoration: none; /* Remove underline */
+  font-weight: bold;
+}
+
+/* Estilos do cabeçalho */
+header {
+  display: flex;
+  flex-direction: row; /* Coloca os itens em linha (padrão) */
+  background-color: var(--roxo-cabecalho);
+  justify-content: space-between;
+  align-items: center; /* Alinha os itens verticalmente */
+  color: var(--roxo-texto-escuro);
+  padding: 2rem;
+  position: relative;
+}
+
+.menu-toggle {
+  font-size: 45px; /* Tamanho do ícone do menu */
+}
+
+.menu {
+  list-style: none; /* Remove bolinhas */
+  padding: 1rem;
+  position: absolute; /* Posiciona o menu abaixo do cabeçalho */
+  right: 1rem;
+  display: none; /*oculta o menu até que o clique seja feito*/
+  flex-direction: column;
+  background-color: var(--roxo-cabecalho);
+  gap: 0.2rem; /* Espaçamento entre os itens */
+  z-index: 1000; /* tras pra frente - camada de visualização */
+}
+
+.aside {
+  display: none; /* Oculta o menu lateral em telas menores */
+}
+
+.menu-wrapper:hover .menu {
+  display: flex; /* Mostra o menu ao passar o mouse ou clicar (mobile) */
+}
+
+/*Estilos carousel*/
+.carousel {
+  position: relative; /* Permite posicionar os elementos internos */
+  overflow: hidden; /* Oculta o conteúdo que transborda */
+  border-radius: 8px;
+}
+
+.carousel input[type="radio"] {
+  display: none; /* Oculta as bolinhas */
+}
+
+.carousel-nav label {
+  display: inline-block;
+  width: 0.5rem; /* Largura das bolinhas */
+  height: 0.5rem; /* Altura das bolinhas */
+  border-radius: 50%; /* Forma de bolinha */
+  margin: 0 0.3rem; /* Espaçamento entre as bolinhas */
+  background-color: var(--roxo-texto-claro);
+}
+
+.carousel-nav {
+  text-align: center; /* Centraliza os botões de navegação */
+  margin-top: 1rem; /* Espaçamento acima das bolinhas */
+}
+
+/* Estilos seção News */
+.News {
+  display: flex;
+  flex-direction: column; /* Coloca os itens em coluna - Titulo -> carousel*/
+  width: 100%; /* Largura total */
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0; /* Impede que o slide encolha */
+  background: var(--roxo-cabecalho);
+  color: var(--roxo-fundo-1);
+  padding: 1rem;
+}
+
+.slide img {
+  width: 100%;
+  height: auto; /* Mantém a proporção da imagem */
+  display: block;
+  border-radius: 1rem;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out; /* Transição entre uma news e outra */
+}
+
+/* Lógica de exibição */
+#news1:checked ~ .slides {
+  /*Verifica se o primeiro radio está selecionado -> Seleciona classe slides no mesmo nível do news1*/
+  transform: translateX(0%); /* Move para a posição inicial */
+}
+#news2:checked ~ .slides {
+  /*Verifica se o segundo radio está selecionado*/
+  transform: translateX(-100%); /* Move para o segundo slide */
+}
+
+/* Estilos seção Challenges */
+.Challenges {
+  background-color: var(--roxo-fundo-1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+/* Lógica de exibição */
+#challenge1:checked ~ .slides {
+  transform: translateX(0%);
+}
+#challenge2:checked ~ .slides {
+  transform: translateX(-100%);
+}
+
+/*Estilo seção agenda*/
+.Agenda {
+  background-color: var(--roxo-fundo-2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  gap: 1.5rem;
+}
+
+/* Estilo seção Learning */
+.Learning {
+  background-color: var(--roxo-fundo-2);
+  padding: 1rem;
+}
+
+.Learning ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.Learning a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--roxo-texto-escuro);
+  background-color: var(--roxo-cabecalho);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+}
+
+.Learning a:hover {
+  background-color: var(--roxo-texto-escuro);
+  color: var(--roxo-cabecalho); /* Inverte as cores no hover */
+}
+
+.Learning-content {
+  display: flex;
+  flex-direction: row; /* Coloca os itens em linha - Lista e img */
+  align-items: center; /* Alinha verticalmente */
+  gap: 1rem;
+}
+
+.Learning img {
+  width: 100%;
+  height: auto; /* Mantém a proporção da imagem */
+  margin: 0 auto; /* Centraliza a imagem */
+}
+
+.Learning ul {
+  list-style: none; /* Remove bolinhas */
+}
+
+/* Formatação rodape  */
+
+footer {
+  text-align: center;
+  background-color: var(--roxo-cabecalho);
+  color: var(--roxo-texto-escuro);
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+
+
+/* HTML page */
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.container .elements{
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--roxo-cabecalho);
+  color: var(--roxo-texto-escuro);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+/*CSS page */
+
+.important {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+
+@media (min-width: 700px) {
+  /* Estilo menu*/
+  .menu-toggle {
+    display: none; /* Oculta o ícone do menu em telas maiores */
+  }
+  .menu {
+    display: flex; /* Mostra o menu em telas maiores */
+    position: static; /* Remove o posicionamento absoluto */
+    flex-direction: row; /* Coloca os itens em linha */
+    gap: 2rem; /* Espaçamento entre os itens */
+    padding: 0 2rem; /* Espaçamento interno */
+  }
+
+  .News,
+  .Challenges,
+  .Agenda,
+  .Learning {
+    padding: 3rem;
+    text-align: center; /* Centraliza o conteúdo */
+  }
+
+  .carousel-nav {
+    display: none; /* Oculta as bolinhas em telas maiores */
+  }
+
+  .carousel {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem;
+  }
+
+  .slide {
+    width: 50%; /* Largura dos slides em telas maiores */
+    margin-right: 1rem; /* Espaçamento entre os slides */
+  }
+
+  .slide h3 {
+    text-align: center; /* Centraliza o título do slide */
+    font-size: 1.2rem; /* Aumenta o tamanho do título */
+    padding: 0.5rem; /* Espaçamento interno */
+  }
+
+  .slide p {
+    text-align: justify; /* Justifica o texto do parágrafo */
+    font-size: 1rem; /* Tamanho do texto */
+    padding: 0.5rem; /* Espaçamento interno */
+  }
+
+  .Learning-content {
+    padding: 2rem;
+    align-items: center; /* Centraliza verticalmente */
+  }
+
+  .slide2 {
+    width: 50%; /* Largura da imagem de aprendizado */
+    padding: auto;
+  }
+  .Learning img {
+    width: 100%; /* Largura total da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0; /* Remove margem */
+  }
+
+  .card{
+    width: 45%;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* Estilo menu*/
+  .menu-toggle {
+    display: none; /* Oculta o ícone do menu em telas maiores */
+  }
+
+  body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
+  }
+
+  #cabecalho {
+    grid-area: header;
+  }
+  aside {
+    grid-area: aside;
+  }
+  main {
+    grid-area: main;
+  }
+  footer {
+    grid-area: footer;
+  }
+
+  .aside {
+    display: flex; /* Mostra o menu lateral em telas maiores */
+    flex-direction: column; /* Coloca os itens em coluna */
+    gap: 2rem; /* Espaçamento entre os itens */
+    background-color: #d5bef1;
+    padding: 5rem 2rem;
+    color: var(--roxo-texto-escuro);
+  }
+
+  .aside h2 {
+    font-size: 2.5rem; /* Aumenta o tamanho do título */
+  }
+
+  .aside ul {
+    display: flex;
+    flex-direction: column; /* Coloca os itens em coluna */
+    gap: 1rem; /* Espaçamento entre os itens */
+    list-style: none; /* Remove bolinhas */
+  }
+
+  aside a {
+    transition: 0.5s;
+    font-size: 2rem;
+  }
+
+  aside a:hover {
+    color: var(--roxo-texto-escuro);
+    padding-left: 2rem;
+  }
+
+  header .menu {
+    display: none; /* Oculta o menu no cabeçalho em telas maiores */
+  }
+}

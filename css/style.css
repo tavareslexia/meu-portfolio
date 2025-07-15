@@ -17,7 +17,7 @@
   --accent-color-dark: #03dac6; /* Cor de destaque escura */
 }
 
-/* Fonte padrão, cor do texto e cor de fundo */
+/* Fonte padrão, cor do texto e cor de fundo, definição padrão */
 body {
   font-family: 'Playfair Display', sans-serif; 
   font-size: 16px;
@@ -28,6 +28,29 @@ body {
   padding: 0; /* Remove o preenchimento */
 }
 
+button {
+  all: unset;
+}
+
+button{
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 5px; 
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0 auto; /* Centraliza o botão */
+}
+
+button:hover {
+  background-color: var(--accent-color); /* Cor de fundo ao passar o mouse */
+  color: var(--secondary-color); /* Cor do texto ao passar o mouse */
+}
+
+
+
+/* Header */
+
 header img {
   width: 125px; /* Largura da imagem */
   height: 125px; /* Altura */
@@ -36,29 +59,103 @@ header img {
   margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-
-
 nav ul {
   list-style: none; /* Remove bolinhas */
   display: flex;    /* Coloca os itens lado a lado */
   padding: 0;       /* Remove espaçamento interno */
   margin: 0;        /* Remove espaçamento externo */
-}
-
-nav li {
-  margin-right: 10px; /* Espaço entre os botões */
-}
-
-
-header nav {
   display:flex;
   flex-wrap: wrap; /* Permite quebra de linha */
-  justify-content: center; /* Centraliza os links */
+  justify-content: center;
 }
 
-button {
-  all: unset;
+nav a {
+  display: inline-block; /* Exibe como bloco */
+  padding: 1rem;
+  color: var(--primary-color); /* Cor do texto dos links */
+  text-decoration: none; /* remove o sublinhado */
+  border-radius: 5px;   /* Borda arredondada */
+  margin-right: 10px; /* espaço entre os botões */
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
+
+nav a:hover{
+  background-color: var(--primary-color); /* tom mais escuro no hover */
+}
+
+a:hover {
+  color: var(--text-color-dark); /* muda cor quando o mouse passa por cima */
+}
+
+
+
+
+
+
+
+/* Página contato */
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction:column;
+  font-size: 0.8rem;
+  padding: 1rem;
+  width: 100%;       /* Largura máxima */
+  margin: 0 auto;          /* Centraliza horizontalmente */ 
+}
+
+.container form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+
+.container header{
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 1rem 0rem;
+}
+
+.container h2 {
+  font-size: 25px;
+  margin-bottom: 20px
+}
+
+.container h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+input:focus, textarea:focus, select:focus {
+  border: 1px solid #d2691e;
+  box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
+  outline: none; /* remove a borda azul padrão do navegador */
+}
+
+
+
+
+
+
+
+
+/* Main de todas as pags*/
+main{
+  display: flex;
+  font-size: 0.8rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+
+
+
+/*Página principal*/
 
 .card {
   display: flex;
@@ -73,22 +170,8 @@ button {
   flex: 1; /* Ocupa espaço igual */
 }
 
-
-nav a, button {
-  display: inline-block; /* Exibe como bloco */
-  padding: 10px 20px;
-  background-color: var(--secondary-color); /* Cor de fundo dos links */
-  color: var(--primary-color); /* Cor do texto dos links */
-  text-decoration: none; /* remove o sublinhado */
-  border-radius: 5px;   /* Borda arredondada */
-  margin-right: 10px; /* espaço entre os botões */
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-}
-
-
-nav a:hover, button:hover {
-  background-color: var(--primary-color); /* tom mais escuro no hover */
+.card article {
+  flex: 1; 
 }
 
 aside a {
@@ -96,7 +179,10 @@ aside a {
   position: relative;
   text-decoration: underline;
   color: var(--secondary-color); 
-  transition: color 0.3s ease;
+}
+
+aside a:hover {
+  color: var(--text-color-dark); /* Muda a cor do link ao passar o mouse */
 }
 
 aside{
@@ -107,52 +193,15 @@ aside{
   background-color:   var(--primary-color); /* Cor de fundo do aside */
 }
 
-a:hover {
-  color: var(--text-color); /* muda cor quando o mouse passa por cima */
-}
-
-.container {
-  max-width: 1200px;       /* Largura máxima */
-  margin: 0 auto;          /* Centraliza horizontalmente */           
-}
-
-.container img {
-  display: block;
-  margin: 0 auto;
-}
-
-
-.container h2 {
-  font-size: 25px;
-  margin-bottom: 20px
-}
-
-
-.container h3 {
-  font-size: 22px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 article a {
   display: inline-block; /* Exibe como bloco */
   padding: 10px 20px;
-  background-color: var(--accent-color);
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   border-radius: 4px; /* Borda arredondada */
   text-decoration: none;
   margin-top: 10px;
-}
-
-article a:hover { /*efeito quando o mouse estiver em cima*/
-  background-color: var(--accent-color);
-}
-
-
-.container ul,
-.container ol {
-  font-size: 20px;
-  line-height: 1;
+  margin: 0 auto; /* Centraliza*/
 }
 
 article {
@@ -168,35 +217,36 @@ article p {
   text-align: justify; /* Justifica o texto */
 }
 
-
-input:focus, textarea:focus, select:focus {
-  border: 1px solid #d2691e;
-  box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
-  outline: none; /* remove a borda azul padrão do navegador */
+article img {
+  width: 80%; /* Largura total do artigo */
+  height: auto; /* Altura automática */
+  border-radius: 8px; /* Borda arredondada */
+  margin: 0 auto; /* Centraliza a imagem */
 }
-
-.card article {
-  flex: 1; 
-}
-
-.card img {
-  max-width: 100%;
-  height: auto;
-}
-
-#rodape {
-  text-align: center;
-}
-
 
 aside h2{
-  color: #fceedd;
+  color: var(--secondary-color);
 }
+
+
+
+
+
+/* Footer */
+
+footer{
+  text-align: center;
+  font-size: 1rem;
+}
+
+
+
+/* Responsividade */
 
 
 
 @media (min-width: 800px) {
-  body {
+  #Home {
     display: grid;
     grid-template-columns: 1fr 4fr; /* duas colunas */
     grid-template-areas: 
@@ -204,18 +254,18 @@ aside h2{
       "aside main"
       "footer footer";
   } 
-  header {
+  #Home header {
     grid-area: header;
   }
-  main {
+  #Home main {
     grid-area: main;
     padding: 20px;
   } 
-  aside {
+  #Home aside {
     grid-area: aside;
     padding: 20px;
   }
-  footer {
+  #Home footer {
     grid-area: footer;
     padding: 10px 0; /* Preenchimento interno */
   }
@@ -236,7 +286,16 @@ aside h2{
   flex-direction: column;
   justify-content: space-between;
 }
+
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
 }
+
+}
+
+
 
 @media(prefers-color-scheme: dark) {
   body {

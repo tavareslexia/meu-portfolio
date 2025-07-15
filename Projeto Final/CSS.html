@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>HTML</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header id="cabecalho">
+        <img src="../images/logo-lab2dev.png" alt="Logo">
+        <nav>
+            <div class="menu-wrapper">
+                <div class="menu-toggle">☰</div>
+                <ul class="menu">
+                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Desafios</a></li>
+                    <li><a href="#">Agenda</a></li>
+                    <li><a href="#">Aprendizado</a></li>
+                    <li><a href="#">Links</a></li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <aside class="aside">
+        <h2>Menu</h2>
+        <ul class="menu2">
+            <li><a href="#news">Notícias</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#desafios">Desafios</a></li>
+            <li><a href="#learning">Aprendizado</a></li>
+            <li><a href="#">Links</a></li>
+        </ul>
+    </aside>
+
+
+
+    <main>
+        <div class="container">
+            <div class="Introducao">
+                <h1>CSS3: Estilizando com Precisão</h1>
+                <p>Bem-vindo à seção de aprendizado em CSSL. Aqui você encontrará recursos e informações sobre CSS.</p>
+            </div>
+            <div class="content">
+                <h2>O que é CSS?</h2>
+                <p>CSS é a sigla para Cascading Style Sheets (Folhas de Estilo em Cascata).É uma linguagem de estilo.
+                    Sua função é controlar toda a aparência visual dos elementos HTML.</p>
+            </div>
+            <h3>Controle de Herança no CSS:</h3>
+            <P> Herança é um mecanismo onde certas propriedades CSS, quando aplicadas a um elemento pai, são passadas
+                para seus elementos filhos. </P>
+            <div class="elements">
+                <div class="card">
+                    <h3>&lt;inherit&gt;</h3>
+                    <ul>
+                        <li>Descrição: Força uma propriedade a herdar explicitamente o valor do elemento pai.</li>
+                        <li>Efeitos: Útil quando uma propriedade não herda por padrão, mas você quer forçar a herança
+                        </li>
+                        <li>Quando usar: Quando você quer garantir consistência de estilo entre elementos filhos e o
+                            pai, especialmente com propriedades não herdadas por padrão como border, padding, etc.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>&lt;initial&gt;</h3>
+                    <ul>
+                        <li>Descrição: Define a propriedade para seu valor padrão do CSS, ignorando a herança.</li>
+                        <li>Efeitos: Útil para resetar valores que podem ter sido herdados ou definidos anteriormente.
+                        </li>
+                        <li>Quando usar: Quando você quer limpar estilos herdados ou definidos por folhas de estilo
+                            anteriores. </li>
+                </div>
+                <div class="card">
+                    <h3>&lt;unset&gt;</h3>
+                    <ul>
+                        <li>Descrição: Combina o comportamento de inherit e initial, e a propriedade é herdável por
+                            padrão, aplica inherit; se não é herdável, aplica initial.</li>
+                        <li>Efeitos: Reseta qualquer valor da propriedade ao seu comportamento padrão de herança.</li>
+                        <li>Quando usar: Quando você quer remover qualquer estilo customizado e voltar ao comportamento
+                            original da propriedade.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>&lt;revert&gt;</h3>
+                    <ul>
+                        <li>Descrição: RRestaura o valor da propriedade para o valor aplicado pela folha de estilo do
+                            agente do usuário (navegador) ou pela CSS cascade anterior, ignorando herança e definições
+                            anteriores.</li>
+                        <li>Efeitos: Útil quando você quer voltar ao comportamento padrão do navegador sem herdar ou
+                            redefinir manualmente.</li>
+                        <li>Quando usar: Quando uma propriedade foi sobrescrita por um CSS externo ou inline e você quer
+                            reverter ao padrão original do navegador.</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="important">
+                <h2>  ATENÇÃO:  </h2>
+                <h3>Sinalizador <strong> !important</strong></h3>
+                <p>Modificador usado para forçar um valor CSS a ter prioridade máxima, mesmo sobre regras mais específicas ou com maior peso na cascata. </p>
+                <P>Quando usar: Em último caso, quando você não consegue sobrescrever um estilo (por ex., estilos inline ou de bibliotecas externas).Para debug temporário ou correções pontuais.</P>
+            </div>
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>

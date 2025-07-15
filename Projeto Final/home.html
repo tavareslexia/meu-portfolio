@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab2dev</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+    <header id="cabecalho">
+        <img src="../images/logo-lab2dev.png" alt="Logo">
+        <nav>
+            <div class="menu-wrapper">
+                <div class="menu-toggle">☰</div>
+                <ul class="menu">
+                    <li><a href="#news">Notícias</a></li>
+                    <li><a href="#agenda">Agenda</a></li>
+                    <li><a href="#desafios">Desafios</a></li>
+                    <li><a href="#learning">Aprendizado</a></li>
+                    <li><a href="#">Links</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="aside">
+        <h2>Menu</h2>
+        <ul class="menu2">
+            <li><a href="#news">Notícias</a></li>
+            <li><a href="#agenda">Agenda</a></li>
+            <li><a href="#desafios">Desafios</a></li>
+            <li><a href="#learning">Aprendizado</a></li>
+            <li><a href="#">Links</a></li>
+        </ul>
+    </aside>
+
+    <main>
+        <div class="News" id="news">
+            <h2>Fique por dentro dos últimos acontecimentos</h2>
+            <div class="carousel">
+                <!-- Botões de controle -->
+                <input type="radio" name="carousel" id="news1" checked>
+                <input type="radio" name="carousel" id="news2">
+
+                <!-- Slides -->
+                <div class="slides">
+                    <article class="slide">
+                        <h3>Palestrante confirmada no #Lab2DevSummit2025!</h3>
+                        <p>Juliana Genova, BTP Solution Advisor na SAP, vai estar no nosso palco compartilhando sua
+                            expertise em dados, analytics e inteligência artificial!</p>
+                        <img src="../images/news1.jpg" alt="Noticia 01">
+                    </article>
+
+                    <article class="slide">
+                        <h3>Novas contratações ProDEV 4.0!</h3>
+                        <p>O ProDev 4.0 foi um sucesso, e agora temos o prazer de anunciar que os aprovados oficialmente
+                            se
+                            juntam ao nosso time!</p>
+                        <img src="../images/NEWS2.png" alt="Noticia 02">
+                    </article>
+                </div>
+
+                <!-- Navegação -->
+                <div class="carousel-nav">
+                    <label for="news1"></label>
+                    <label for="news2"></label>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="Agenda" id="agenda">
+            <h2>Agenda</h2>
+            <article>
+                <h3>Festa Junina </h3>
+                <p> 14/07 - Arraial da Lab2Dev &#x1F38A;</p>
+            </article>
+            <article>
+                <h3>Lab2Dev Summit 2025 &#x1F680;</h3>
+                <p> 25/11 - Evento de tecnologia e inovação</p>
+            </article>
+        </div>
+
+
+        <div class="Challenges" id="desafios">
+            <h2>Desafios da semana</h2>
+            <div class="carousel">
+                <input type="radio" name="carousel2" id="challenge1" checked>
+                <input type="radio" name="carousel2" id="challenge2">
+
+                <div class="slides">
+                    <article class="slide">
+                        <img src="../images/desafio1.png" alt="Desafio 01">
+                    </article>
+                    <article class="slide">
+                        <img src="../images/desafio2.png" alt="Desafio 02">
+                    </article>
+                </div>
+
+                <!-- Navegação -->
+                <div class="carousel-nav">
+                    <label for="challenge1"></label>
+                    <label for="challenge2"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="Learning" id="learning">
+            <h2>Learning & Development</h2>
+            <div class="Learning-content">
+                <div class="slide2">
+                    <ul>
+                        <li><a href="CSS.html">CSS</a></li>
+                        <li><a href="HTML.html">HTML</a></li>
+                        <li><a href="Java.html">Java</a></li>
+                    </ul>
+                </div>
+                <div class="slide2">
+                    <img src="../images/learning.png" alt="Learning">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="rodape">
+        &copy; 2025 Lab2Dev.</br> Todos os direitos reservados.
+    </footer>
+
+</body>
+
+</html>
