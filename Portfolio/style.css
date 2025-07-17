@@ -195,10 +195,9 @@ main {
 
 /* Estilo projetos */
 
-.slide img:hover{
-  cursor: pointer;  
+.slide img:hover {
+  cursor: pointer;
 }
-
 
 .slides {
   display: flex;
@@ -310,6 +309,12 @@ footer {
 }
 
 @media (min-width: 700px) {
+
+  .menu li:hover{
+    scale: 1.1;
+  }
+
+
   .menu-toggle {
     display: none;
   }
@@ -354,7 +359,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
     margin-bottom: 2rem;
   }
 
@@ -397,6 +401,11 @@ footer {
   .Contact p {
     margin: 1rem;
   }
+
+  .Home,
+  .AboutMe{
+    height: 100vh;
+  }
 }
 
 @media (min-width: 1000px) {
@@ -407,7 +416,12 @@ footer {
 }
 
 @media (min-width: 1400px) {
-  a, button {
+  .Projects {
+    height: 100vh;
+  }
+
+  a,
+  button {
     font-size: 1.5rem;
   }
 
@@ -415,7 +429,7 @@ footer {
     font-size: 1.5rem;
   }
 
-  .Projects h4{
+  .Projects h4 {
     font-size: 1.8rem;
   }
 
