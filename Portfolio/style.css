@@ -1,0 +1,449 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Remove default list style */
+  text-decoration: none; /* Remove underline from links */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --azul-texto-light: #2cd3e1;
+  --rosa-botoes-light: #f34fa1;
+  --preto-texto-light: #000000;
+  --preto-hover-light: #b0b0b0;
+  --azul-botao-light: #7febf521;
+  --azul-footer-light: #23e9b4;
+  --azul-hover-light: #bef1f6;
+  --rosa-hover-light: #fde8f2;
+}
+
+/* Estilos globais */
+body {
+  font-family: "Popins", sans-serif;
+  line-height: 1.6;
+  background-color: #f1f3f5;
+  color: var(--preto-texto-light);
+  width: 100%; /* Largura total */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+a {
+  color: var(--preto-texto-light);
+}
+
+.Projects,
+.Contact,
+.AboutMe,
+.Home {
+  scroll-margin-top: 90px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+p {
+  text-align: justify;
+  padding: 0.5rem;
+}
+
+/* Estilos do cabeçalho */
+
+header {
+  display: flex;
+  padding-right: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  background: #f1f3f5;
+  z-index: 1000;
+  height: 90px;
+}
+
+header img {
+  width: 9rem;
+}
+.menu-toggle {
+  font-size: 3rem;
+}
+
+.menu a {
+  color: white;
+}
+
+.menu a:visited {
+  color: white; /* evita o roxo padrão */
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  position: absolute;
+  width: 7rem;
+  background-color: var(--preto-texto-light);
+  color: white;
+  padding: 1rem;
+  display: none;
+}
+
+.menu-wrapper:hover .menu {
+  display: flex; /* Mostra o menu ao passar o mouse ou clicar (mobile) */
+}
+
+/* Estilos do conteúdo principal */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/*Estilo Home*/
+
+.Home button {
+  background-color: var(--rosa-botoes-light);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.Home h3 {
+  color: var(--azul-texto-light);
+}
+
+.Home .home-picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* Estilo about me */
+
+#profile-picture {
+  display: none;
+}
+
+.AboutMe p {
+  margin: 1rem 0;
+}
+
+.skill {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.bar {
+  background-color: var(--rosa-hover-light);
+  height: 0.7rem;
+  border-radius: 5px;
+  width: 70%;
+  border: var(--rosa-botoes-light) 0.2rem solid;
+}
+
+.fill {
+  background-color: var(--rosa-botoes-light);
+  height: 100%;
+  position: relative;
+}
+
+.thumb {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-color: var(--rosa-hover-light);
+  border: 3px solid var(--rosa-botoes-light);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; /*em relação ao eixo horizontal da fill*/
+  right: 0; /*encosta no canto direito da fill*/
+  transform: translate(
+    50%,
+    -50%
+  ); /*X: um pouquinho a frente da fill Y:ajusta centralização */
+}
+
+/* Estilo projetos */
+
+.slide img:hover{
+  cursor: pointer;  
+}
+
+
+.slides {
+  display: flex;
+  width: 300%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.582);
+  border-radius: 2rem;
+}
+
+.slide img {
+  width: 50%;
+  border-radius: 1rem;
+}
+
+.carousel {
+  position: relative; /* Permite posicionar os elementos internos */
+  overflow: hidden; /* Oculta o conteúdo que transborda */
+}
+
+.carousel input[type="radio"] {
+  display: none; /* Oculta as bolinhas */
+}
+
+.carousel-nav label {
+  display: inline-block;
+  width: 0.5rem; /* Largura das bolinhas */
+  height: 0.5rem; /* Altura das bolinhas */
+  border-radius: 50%; /* Forma de bolinha */
+  margin: 0 0.3rem; /* Espaçamento entre as bolinhas */
+  background-color: var(--rosa-botoes-light);
+}
+
+/* Lógica de exibição */
+#project1:checked ~ .slides {
+  /*Verifica se o primeiro radio está selecionado -> Seleciona classe slides no mesmo nível do news1*/
+  transform: translateX(0%); /* Move para a posição inicial */
+}
+#project2:checked ~ .slides {
+  /*Verifica se o segundo radio está selecionado*/
+  transform: translateX(-33%); /* Move para o segundo slide */
+}
+
+#project3:checked ~ .slides {
+  /*Verifica se o terceiro radio está selecionado*/
+  transform: translateX(-66%); /* Move para o terceiro slide */
+}
+
+/*Estilo Contact me */
+
+input,
+textarea,
+select,
+button {
+  all: unset;
+}
+
+.Contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.Contact button {
+  margin: auto;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--rosa-botoes-light);
+  margin-top: 1rem;
+}
+
+.Contact label {
+  text-align: justify;
+}
+
+.Contact input,
+textarea {
+  background-color: var(--azul-botao-light);
+  border-bottom: var(--azul-texto-light) solid;
+  text-align: left;
+}
+
+button:hover {
+  background-color: var(--rosa-hover-light);
+  border: 0.2rem solid var(--rosa-botoes-light);
+  cursor: pointer;
+}
+
+.Projects img:hover {
+  scale: 1.1;
+}
+
+/*Estilo footer*/
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu a:visited {
+    color: var(--preto-texto-light); /* evita o roxo padrão */
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background: none;
+    gap: 2rem;
+    width: fit-content;
+    font-weight: bold;
+  }
+
+  .home2 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .home-picture {
+    width: 70%;
+  }
+
+  .Home {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+  }
+
+  .Home button {
+    width: 20%;
+    align-self: center;
+  }
+
+  .AboutMe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  #profile-picture {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+  }
+
+  #profile-picture img {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .Projects p {
+    text-align: center;
+  }
+
+  .carousel-nav {
+    display: none;
+  }
+
+  .slides {
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .slide {
+    width: fit-content;
+  }
+
+  .Projects {
+    margin-bottom: 2rem;
+  }
+
+  .Contact p {
+    margin: 1rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  main {
+    width: 80%;
+    align-self: center;
+  }
+}
+
+@media (min-width: 1400px) {
+  a, button {
+    font-size: 1.5rem;
+  }
+
+  .Projects p {
+    font-size: 1.5rem;
+  }
+
+  .Projects h4{
+    font-size: 1.8rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 3.5rem;
+  }
+
+  h3 {
+    font-size: 3rem;
+  }
+
+  h4 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+
+  .slides {
+    flex-wrap: nowrap;
+  }
+
+  .home2 {
+    align-items: center;
+  }
+}
