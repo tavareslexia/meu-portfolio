@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 04 - Java Script</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+    <div class="buttons">
+        <button onclick="gerarElogio()"> Gerador de elogios </button>
+        <button onclick="pegarNome()"> Saudação personalizada </button>
+        <button onclick="pegarPeso(); pegarAltura()"> Calculadora de IMC </button>
+        <button onclick="pegarTemperatura()"> Conversor de temperatura </button>
+    </div>
+
+    <div class="mensagem">
+        <p id="mensagem"> </p>
+    </div>
+
+    <div class="input">
+        <div class="inputSaudacao">
+            <input type="text" id="inputNome" placeholder="Digite o seu nome:">
+        </div>
+        <div class="inputIMC">
+            <input type="number" id="inputPeso" placeholder="Digite o seu peso:">
+            <input type="number" id="inputAltura" placeholder="Digite a sua altura:">
+        </div>
+        <div class="inputConversorTemp">
+            <input type="number" id="inputTemperatura" placeholder="Digite a temperatura em graus Celsius:">
+        </div>
+    </div>
+
+</body>
+
+</html>
