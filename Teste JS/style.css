@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: antiquewhite;
+  width: 80%;
+  margin: auto;
+  justify-content: center;
+  height: 100vh; /* altura total da tela */
+  display: flex;
+  align-items: center; /* centraliza verticalmente */
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  border: black 0.2rem solid;
+  border-radius: 2rem;
+  padding: 2rem;
+  gap: 2rem;
+  justify-content: center;
+}
+
+button {
+  background-color: black;
+  border-radius: 1rem;
+  color: white;
+  padding: 2rem;
+  width: 50%;
+  font-size: 1.5rem;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.inputSaudacao, .inputIMC, .inputConversorTemp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none; /* oculto por padrão */
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /*tras pra frente*/
+}
+
+#inputPeso {
+  display: none;
+}
+
+#inputAltura {
+  display: none;
+}
+
+#inputNome {
+  display: none;
+}
+
+#inputTemperatura {
+  display: none;
+}
+
+.mensagem {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none; /* oculto por padrão */
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /*tras pra frente*/
+}
+
+#mensagem {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  max-width: 80%;
+  text-align: center;
+}
