@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 04 - Java Script</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+    <div class="buttons">
+        <button onclick="pegarIdade(); pegarCNH()";> Verificador de Elegibilidade </button>
+        <button onclick="pegarNota()"> Classificação de notas </button>
+        <button onclick="pegarOpcao()"> Menu de opções </button>
+    </div>
+
+    <div class="mensagem">
+        <p id="mensagem"> </p>
+    </div>
+
+    <div class="input">
+        <div class="inputNota">
+            <input type="number" id="inputNota" placeholder="Digite a sua nota:">
+        </div>
+        <div class="inputElegibilidade">
+            <input type="number" id="inputIdade" placeholder="Digite a sua idade">
+            <input type="string" id="inputCNH" placeholder="Você possui CNH?">
+        </div>
+        <div class="inputMenu">
+            <input type="string" id="inputOpcao" placeholder="Digite a opção desejada:">
+        </div>
+    </div>
+
+</body>
+
+</html>
