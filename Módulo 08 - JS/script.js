@@ -67,7 +67,6 @@ const configFormatada = {};
 
 for (var i in configDesordenada) {
   let novaChave = i.toLowerCase();
-
   removerCaracter(novaChave, "-");
   removerCaracter(novaChave, "_");
   configFormatada[novaChave] = configDesordenada[i];

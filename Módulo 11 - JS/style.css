@@ -1,0 +1,4 @@
+
+body { font-family: sans-serif; }
+.caixa { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+.escondido { display: none; }
