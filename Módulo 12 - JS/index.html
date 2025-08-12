@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check the weather</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+</head>
+
+<body>
+
+    <div class="home_page">
+        <div class="icone">
+            <img src="images/home_icon.png" alt="Logo">
+        </div>
+        <div class="texto_home">
+            <p>Check the</p>
+            <p id="weather"> WEATHER </p>
+        </div>
+        <div class="button_start">
+            <button id="startButton"> Get start </button>
+        </div>
+    </div>
+
+
+    <div class="check_weather">
+        <div class="texto_search">
+            <p>Choose the city:</p>
+        </div>
+        <div class="container">
+            <p> UF:</p>
+            <select class="form-select UF" id="select-uf" onchange="loadCities()">
+                <option selected> Select the state</option>
+            </select>
+
+            <P> CITY:</P>
+            <select class="form-select city" id="select-city">
+                <option selected> Select the city</option>
+            </select>
+        </div>
+        <div class="button_check">
+            <button id="checkButton" onclick="loadCoordinates()"> Check weather </button>
+        </div>
+
+    </div>
+
+    <div id="spinner" class="spinner"></div>
+
+    <div class="weather_page">
+        <div class="menu-back"><i class="fas fa-arrow-left"></i></div>
+        <div class="weather_forecast">
+            <div class="general_info">
+                <p id="country_state"></p>
+                <p id="city_name"> </p>
+                <img id="image" src="images/home_icon.png" alt="Logo">
+                <p id="temperature"></p>
+                <p id="weather_status"> </p>
+            </div>
+            <div class="hourlyWeather">
+
+                <div class="card">
+                    <p id="hour"> </p>
+                    <img id="miniImage" src="" alt="Logo">
+                    <p id="hourTemperature"> </p>
+                </div>
+
+            </div>
+            <div class="coordinates">
+                <div class="latitude">
+                    <p>Latitude</p>
+                    <p id="latitude"></p>
+
+                </div>
+                <div class="longitude">
+                    <p>Longitude</p>
+                    <p id="longitude"> </p>
+
+                </div>
+            </div>
+
+            <div class="wind">
+                <p>Wind</p>
+                <p id="wind"></p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mensagem">
+        <div id="mensagem">
+            <p>Correspondencia cidade e estado não encontrada!</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

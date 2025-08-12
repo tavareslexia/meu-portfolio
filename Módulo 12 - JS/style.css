@@ -1,0 +1,232 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --azul-escuro: #09042a;
+  --texto-claro: #cfcce5;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--azul-escuro);
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(180, 220, 235, 0.8) 0%,
+    rgba(170, 216, 237, 0.8) 20%,
+    rgba(153, 211, 240, 0.8) 40%,
+    rgba(142, 205, 242, 0.8) 60%,
+    rgba(132, 197, 242, 0.8) 80%,
+    rgba(122, 190, 241, 0.8) 100%
+  );
+}
+
+.home_page,
+.check_weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  gap: 3rem;
+  padding-bottom: 8rem;
+  height: 100vh;
+}
+
+.check_weather {
+  padding-top: 10rem;
+}
+
+.weather_page {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  padding-top: 0.5rem;
+  width: 100%;
+  height: 100vh;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.general_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2.5rem;
+  gap: 1rem;
+}
+
+.coordinates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#image {
+  width: 70%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+img {
+  width: 100%;
+  margin: none;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.texto_home,
+.texto_search {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  line-height: 120%;
+}
+
+#weather {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+button {
+  background-color: var(--azul-escuro);
+  color: var(--texto-claro);
+  font-weight: bold;
+  border-radius: 4rem;
+  font-size: 1.5rem;
+  border: none;
+  width: 270px;
+  height: 70px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  width: 80%;
+  font-size: 1.5rem;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  height: 40px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4rem;
+  font-size: 1rem;
+}
+
+.latitude,
+.longitude,
+.wind,
+.container {
+  background: rgba(255, 255, 255, 0.1); /* fundo semi-transparente */
+  backdrop-filter: blur(10px); /* efeito de vidro */
+  -webkit-backdrop-filter: blur(10px); /* suporte para Safari */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); /* brilho ao redor */
+  padding: 25px;
+  color: var(--azul-escuro);
+}
+
+.check_weather,
+.weather_page {
+  display: none;
+}
+
+.weather_forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.general_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.coordinates {
+  display: flex;
+  flex-direction: row;
+}
+
+.spinner {
+  display: none; /* Oculto por padrão */
+  width: 50px;
+  height: 50px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+#mensagem::before {
+  content: "⚠️";
+  font-size: 1.8rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.mensagem {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none; /* oculto por padrão */
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /*tras pra frente*/
+}
+
+#mensagem {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  max-width: 80%;
+  text-align: center;
+}
+
+.menu-back {
+  font-size: 24px;
+  color: var(--azul-escuro);
+  display: inline-block;
+  padding: 8px;
+}
