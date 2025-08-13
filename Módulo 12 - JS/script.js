@@ -7,16 +7,17 @@ let checktButton = document.querySelector("#checkButton");
 const spinner = document.getElementById("spinner");
 const errorBox = document.getElementById("mensagem");
 
-let textLatitude = document.querySelector("#latitude");
-let textLongitude = document.querySelector("#longitude");
+// let textLatitude = document.querySelector("#latitude");
+// let textLongitude = document.querySelector("#longitude");
 let textWind = document.querySelector("#wind");
 let textTemperature = document.querySelector("#temperature");
 let textWeather = document.querySelector("#weather_status");
 let textCountryState = document.querySelector("#country_state");
 let textCity = document.querySelector("#city_name");
-let homePageImage = document.querySelector("#image"); //melhorar nome
+let homePageImage = document.querySelector("#image");
 
-let returnButton = document.querySelector(".menu-back"); //melhorar nome
+let returnButton = document.querySelector(".menu-back");
+const carousel = document.getElementById("weather-carousel");
 
 const weatherCodeDescriptions = {
   0: "Clear sky",
@@ -77,25 +78,31 @@ function formatString(name) {
     .join(" "); // junta de volta com espaço
 }
 
-// Pegar lista dos estados do Brasil
-function loadStates() {
-  fetch(APIstate)
+//Função fetch/catch
+function fetchData(url) {
+  return fetch(url)
     .then((res) => {
       if (!res.ok) throw new Error("Erro na requisição");
       return res.json();
     })
-    .then((data) => {
-      data.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR")); // ordem alfabetica
-      data.forEach((state) => {
-        let option = document.createElement("option");
-        option.value = state.sigla;
-        option.textContent = state.nome;
-        stateSelect.append(option);
-      });
-    })
     .catch((erro) => {
       console.error("Erro:", erro);
+      alert("Ocorreu um erro ao buscar os dados. Tente novamente.");
+      throw erro;
     });
+}
+
+// Pegar lista dos estados do Brasil
+function loadStates() {
+  fetchData(APIstate).then((data) => {
+    data.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR")); // ordem alfabetica
+    data.forEach((state) => {
+      let option = document.createElement("option");
+      option.value = state.sigla;
+      option.textContent = state.nome;
+      stateSelect.append(option);
+    });
+  });
 }
 
 stateSelect.addEventListener("change", () => {
@@ -110,29 +117,21 @@ function loadCities() {
   const regexParenteses = /\(([^)]+)\)/g; //regex para pegar tudo que está entre ()
   const selectedState = stateSelect.value;
 
-  fetch(
-    `https://brasilapi.com.br/api/ibge/municipios/v1/${selectedState}?providers=dados-abertos-br,gov,wikipedia`
-  )
-    .then((res) => {
-      if (!res.ok) throw new Error("Erro na requisição");
-      return res.json();
-    })
-    .then((data) => {
-      data.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR")); //ordem alfabetica
-      data.forEach((city) => {
-        let option = document.createElement("option");
-        option.value = formatString(
-          city.nome.replaceAll(regexParenteses, "").trim()
-        );
-        option.textContent = formatString(
-          city.nome.replaceAll(regexParenteses, "").trim()
-        );
-        citySelect.append(option);
-      });
-    })
-    .catch((erro) => {
-      console.error("Erro:", erro); //exibir erro na tela
+  const url = `https://brasilapi.com.br/api/ibge/municipios/v1/${selectedState}?providers=dados-abertos-br,gov,wikipedia`;
+
+  fetchData(url).then((data) => {
+    data.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR")); //ordem alfabetica
+    data.forEach((city) => {
+      let option = document.createElement("option");
+      option.value = formatString(
+        city.nome.replaceAll(regexParenteses, "").trim()
+      );
+      option.textContent = formatString(
+        city.nome.replaceAll(regexParenteses, "").trim()
+      );
+      citySelect.append(option);
     });
+  });
 }
 
 //Pegar latitude e longitude da cidade escolhida
@@ -140,73 +139,95 @@ function loadCities() {
 function loadCoordinates() {
   const selectedState = stateSelect.options[stateSelect.selectedIndex].text; // Retorna a sigla da UF, não o nome
   const selectedCity = citySelect.value.replaceAll("-", " ");
+  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${selectedCity}&country_code=BR&language=pt`;
 
-  fetch(
-    `https://geocoding-api.open-meteo.com/v1/search?name=${selectedCity}&country_code=BR&language=pt`
-  )
-    .then((res) => {
-      if (!res.ok) throw new Error("Erro na requisição");
-      return res.json();
-    })
-    .then((data) => {
-      if (!data.results || data.results.length === 0) {
-        throw new Error("Cidade não encontrada");
-      }
+  fetchData(url).then((data) => {
+    if (!data.results || data.results.length === 0) {
+      throw new Error("Cidade não encontrada");
+    }
 
-      const result = data.results.find(
-        (r) =>
-          r.admin1.toLowerCase() === selectedState.toLowerCase() &&
-          (!r.admin2 ||
-            r.admin2
-              .replaceAll("-", " ")
-              .toLowerCase()
-              .includes(selectedCity.replaceAll("-", " ").toLowerCase()))
-      );
+    const result = data.results.find(
+      (r) =>
+        r.admin1.toLowerCase() === selectedState.toLowerCase() &&
+        (!r.admin2 ||
+          r.admin2
+            .replaceAll("-", " ")
+            .toLowerCase()
+            .includes(selectedCity.replaceAll("-", " ").toLowerCase()))
+    );
 
-      if (!result) {
-        hideSpinnerError();
-        // showError("Correspondência estado e cidade não encontrada");
-        return;
-      }
+    if (!result) {
+      hideSpinnerError();
+      // showError("Correspondência estado e cidade não encontrada");
+      return;
+    }
 
-      const latitude = result.latitude;
-      const longitude = result.longitude;
+    const latitude = result.latitude;
+    const longitude = result.longitude;
 
-      textLatitude.textContent = latitude.toFixed(2);
-      textLongitude.textContent = longitude.toFixed(2);
+    // textLatitude.textContent = latitude.toFixed(2);
+    // textLongitude.textContent = longitude.toFixed(2);
 
-      textCity.textContent = selectedCity;
-      textCountryState.textContent = selectedState;
+    textCity.textContent = selectedCity;
+    textCountryState.textContent = selectedState;
 
-      getWeather(latitude, longitude);
-    })
-    .catch((erro) => {
-      console.error("Erro:", erro.message);
-    });
+    getWeather(latitude, longitude);
+  });
 }
-
+//Pegar informações do clima
 function getWeather(latitude, longitude) {
-  fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
-  )
-    .then((res) => {
-      if (!res.ok) throw new Error("Erro na requisição");
-      return res.json();
-    })
-    .then((data) => {
-      const temperature = data.current_weather.temperature;
-      const weatherCode = data.current_weather.weathercode;
-      const isDay = data.current_weather.is_day;
-      const wind = data.current_weather.windspeed;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&hourly=temperature_2m,rain,weather_code&timezone=America%2FSao_Paulo&forecast_days=1`;
 
-      fillWeatherPage(temperature, weatherCode, isDay, wind);
-    })
+  fetchData(url).then((data) => {
+    const temperature = data.current_weather.temperature;
+    const weatherCode = data.current_weather.weathercode;
+    const isDay = data.current_weather.is_day;
+    const wind = data.current_weather.windspeed;
+    const hourlyData = data.hourly;
 
-    .catch((erro) => {
-      console.error("Erro:", erro);
-    });
+    fillWeatherPage(temperature, weatherCode, isDay, wind);
+    fillHourlyForecast(hourlyData, isDay);
+  });
 }
 
+//Criar o carrosel
+
+function fillHourlyForecast(hourlyData, isDay) {
+  const container = document.getElementById("weather-carousel");
+  container.innerHTML = ""; // limpa o conteúdo anterior
+
+  const times = hourlyData.time;
+  console.log(times);
+  const temps = hourlyData.temperature_2m;
+  console.log(temps);
+  const codes = hourlyData.weather_code;
+  console.log(codes);
+
+  for (let i = 0; i < times.length; i++) {
+    const time = new Date(times[i]);
+    const hour = time.toLocaleTimeString("pt-BR", {
+      hour: "2-digit",
+    });
+    console.log(time);
+
+    const weatherCode = codes[i];
+    const temperature = temps[i];
+
+    const iconFile = getWeatherImageName(weatherCode, isDay);
+
+    const item = document.createElement("div");
+    item.className = "weather-item";
+    item.innerHTML = `
+      <div class="weather-time">${hour} h</div>
+      <img src="images/${iconFile}" alt="Ícone clima" class="weather-icon">
+      <div class="weather-temp">${temperature.toFixed(2)}°C</div>
+    `;
+
+    container.append(item);
+  }
+}
+
+//Selecionar imagem do clima
 function getWeatherImageName(weatherCode, isDay) {
   const timePrefix = isDay ? "Day" : "Night";
 
@@ -228,7 +249,7 @@ function getWeatherImageName(weatherCode, isDay) {
     return `${timePrefix}_clouds.png`; // padrão
   }
 }
-
+//Preencher informações na página
 function fillWeatherPage(temperature, weatherCode, isDay, wind) {
   textTemperature.textContent = temperature + " °C";
   textWeather.textContent =
@@ -253,6 +274,7 @@ function hideSpinner() {
 function hideSpinnerError() {
   spinner.style.display = "none";
   document.querySelector(".mensagem").style.display = "flex";
+  document.getElementById("errorCityNotFound").style.display = "flex";
 }
 
 errorBox.addEventListener("click", function () {

@@ -64,14 +64,12 @@
             </div>
             <div class="hourlyWeather">
 
-                <div class="card">
-                    <p id="hour"> </p>
-                    <img id="miniImage" src="" alt="Logo">
-                    <p id="hourTemperature"> </p>
+                <div class="weather-carousel" id="weather-carousel">
+
                 </div>
 
             </div>
-            <div class="coordinates">
+            <!-- <div class="coordinates">
                 <div class="latitude">
                     <p>Latitude</p>
                     <p id="latitude"></p>
@@ -82,7 +80,7 @@
                     <p id="longitude"> </p>
 
                 </div>
-            </div>
+            </div> -->
 
             <div class="wind">
                 <p>Wind</p>
@@ -94,7 +92,8 @@
 
     <div class="mensagem">
         <div id="mensagem">
-            <p>Correspondencia cidade e estado não encontrada!</p>
+            <p id="errorCityNotFound">Correspondencia cidade e estado não encontrada!</p>
+            <p id="errorRequest"> Erro no carragemento das informações, tente novamente.</p>
         </div>
     </div>
 
