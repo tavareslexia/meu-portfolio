@@ -1,0 +1,50 @@
+Atividade 02: aplicativo de delivery
+
+GET /menu
+
+Entrada: 
+
+Saída: 
+
+200 OK
+[
+  {
+    "id": 001,
+    "nome": "Mc Chicken",
+    "preco": 24.90,
+    "ingredientes": ["pão", "alface","hamburguer de frango", "molho especial"]
+  },
+  ...
+]
+
+404 Not Found
+{ "mensagem": "Menu não encontrado." }
+
+POST /pedidos 
+
+Entrada:
+
+{
+  "usuario_id": 01,
+  "itens": [
+    { "prato_id": 001, "quantidade": 1 },
+    { "prato_id": 002, "quantidade": 1 }
+  ],
+  "endereco_entrega": "Avenida Valdemar Ferreira, 447"
+}
+
+Saída
+201 Created
+{
+  "mensagem": "Pedido confirmado",
+  "pedido_id": 001
+}
+
+401  Unauthorized
+{ "mensagem": "Usuário não autenticado." }
+
+404 Not Found
+{ "mensagem": "Prato não encontrado: ID 001" }
+
+400 Bad Request
+{ "mensagem": "Dados inválidos." }

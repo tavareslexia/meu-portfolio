@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de produto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="alert.js" defer></script>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Cadastro de Produtos</h1>
+        <div class="form">
+            <form id="form-produto">
+                <div class="formInput">
+                    <label for="nome">Nome do produto:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <br />
+
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" name="quantidade" required>
+                    <br />
+
+                    <button type="submit">Adicionar Produto</button>
+                    <br />
+                </div>
+            </form>
+        </div>
+        <div id="lista-produtos"></div>
+    </div>
+</body>
+
+</html>

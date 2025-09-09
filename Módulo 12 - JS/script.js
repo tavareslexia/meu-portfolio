@@ -79,7 +79,7 @@ function formatString(name) {
 }
 
 //Função fetch/catch
-function fetchData(url) {
+async function fetchData(url) {
   return fetch(url)
     .then((res) => {
       if (!res.ok) throw new Error("Erro na requisição");
@@ -219,8 +219,8 @@ function fillHourlyForecast(hourlyData, isDay) {
     item.className = "weather-item";
     item.innerHTML = `
       <div class="weather-time">${hour} h</div>
-      <img src="images/${iconFile}" alt="Ícone clima" class="weather-icon">
-      <div class="weather-temp">${temperature.toFixed(2)}°C</div>
+      <img src="images/${iconFile}" alt="Weather Icon" class="weather-icon">
+      <div class="weather-temp">${temperature.toFixed(1)}°C</div>
     `;
 
     container.append(item);

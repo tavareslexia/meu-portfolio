@@ -1,0 +1,123 @@
+Atividade 03: plataforma de cursos
+
+POST /users
+
+Entrada:
+
+{
+    "name": "Alexia Tavares",
+    "email": "alexia@email.com",
+    "password": "123456"
+}
+
+
+Saída:
+
+201 Created
+{ "message": "User created.", "id": 10 }
+
+400 Bad Request
+{ "message": "User alredy exists." }
+
+
+POST /login
+
+Entrada:
+
+{
+    "email": "alexia@email.com",
+    "password": "123456"
+}
+
+
+Saída:
+
+200 OK
+{ "token": "jwt_token_aqui" }
+
+401 Unauthorized
+{ "message": "Wrong password." }
+
+
+GET /classes?category=coding
+
+Saída:
+
+200 OK
+[
+  { "id": 1, "title": "JavaScript", "category": "Coding" },
+  { "id": 2, "title": "Python", "category": "Coding" }
+]
+
+404 Not Found
+{ "mensagem": "Classes not found." }
+
+
+GET /cursos/1
+
+Saída:
+
+200 OK
+{
+    "id": 1,
+    "title": "JavaScript",
+    "description": "JS basics",
+    "lessons": [
+        { "id": 101, "title": "JS for babies" },
+        { "id": 102, "title": "JS for kids" }
+    ]
+}
+
+404 Not Found
+{ "message": "Lessons not found." }
+
+
+POST /inscricoes
+
+Entrada:
+
+{
+    "user_id": 10,
+    "classes_id": 1
+}
+
+
+Saída:
+
+200 OK
+{ "mensagem": "Subscription done." }
+
+401 Unauthorized
+{ "mensagem": "User not found." }
+
+404 Not Found
+{ "mensagem": "Classes not found." }
+
+409 Conflict
+{ "mensagem": "User already subscribed" }
+
+
+POST /progress
+
+Entrada:
+
+{
+    "user_id": 10,
+    "classes_id": 1,
+    "lesson_id": 101
+}
+
+
+Saída:
+
+200 OK
+{ "mensagem": "Lesson done." }
+
+401 Unauthorized
+{ "mensagem": "User not found." }
+
+403 Forbidden
+{ "mensagem": "User not subscribed." }
+
+404 Not Found
+{ "mensagem": "Class not found." }

@@ -1,0 +1,163 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --azul-escuro: #09042a;
+  --texto-claro: #cfcce5;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--azul-escuro);
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(180, 220, 235, 0.8) 0%,
+    rgba(170, 216, 237, 0.8) 20%,
+    rgba(153, 211, 240, 0.8) 40%,
+    rgba(142, 205, 242, 0.8) 60%,
+    rgba(132, 197, 242, 0.8) 80%,
+    rgba(122, 190, 241, 0.8) 100%
+  );
+}
+
+#form-produto {
+  background-color: var(--azul-escuro);
+  color: var(--texto-claro);
+  font-weight: bold;
+  border-radius: 4rem;
+  font-size: 1.5rem;
+  border: none;
+  width: 270px;
+  height: 70px;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#mensagemForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: #ddd;
+}
+
+.form {
+  background: rgba(255, 255, 255, 0.1); /* fundo semi-transparente */
+  backdrop-filter: blur(10px); /* efeito de vidro */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2); /* brilho ao redor */
+  padding: 25px;
+  color: var(--azul-escuro);
+}
+
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inputs,
+.submits {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.form input {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: separate; /* permite arredondar bordas */
+  border-spacing: 0; /* remove espaçamento entre células */
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 12px; /* arredonda a borda da tabela */
+  overflow: hidden; /* aplica arredondamento também no conteúdo */
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--azul-escuro);
+  color: var(--texto-claro);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+td {
+  background-color: whitesmoke;
+}
+
+.mensagem {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none; /* oculto por padrão */
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /*tras pra frente*/
+}
+
+#mensagem {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  max-width: 80%;
+  text-align: center;
+}

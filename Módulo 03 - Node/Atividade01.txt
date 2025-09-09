@@ -1,0 +1,56 @@
+Atividade 01: sistema de biblioteca online
+
+GET /livros?titulo=O pequeno principe
+
+Entrada:
+
+Saída:
+
+200 OK 
+{
+    "id": 1,
+    "titulo": "O pequeno principe",
+    "generos": ["Romance","Clássico"],
+    "autores": ["Antoine de Saint-Exupéry"],
+    "publicação": "06-04-1943"
+}
+
+404 Not Found
+{ "mensagem": "Livro não encontrado" }
+
+POST /reservas 
+
+Entrada:
+{
+    "usuario": 001,
+    "livro_id": 1
+}
+
+Saída:01
+200 OK
+{ "mensagem": "Reserva realizada com sucesso." }
+
+401  Unauthorized
+{ "mensagem": "Usuário não autenticado." }
+
+404 Not Found
+{ "mensagem": "Livro não encontrado" }
+
+
+POST /devoluções 
+
+Entrada:
+{
+    "usuario": 001,
+    "livro_id": 1
+}
+
+Saída:
+200 OK
+{ "mensagem": "Devolução realizada com sucesso." }
+
+404 Not Found
+{ "mensagem": "Reserva não encontrada." }
+
+401  Unauthorized
+{ "mensagem": "Usuário não autenticado." }
