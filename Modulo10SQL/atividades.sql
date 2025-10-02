@@ -40,7 +40,6 @@ JOIN Produtos pr ON i.id_produto = pr.id_produto
 GROUP BY c.cidade, pr.id_produto, pr.nome
 ORDER BY c.cidade, total_unidades DESC;
 
-
 -- Realize um select que traga o nome do cliente em maiúsculo,
 -- cidade 
 -- total gasto pelo cliente 

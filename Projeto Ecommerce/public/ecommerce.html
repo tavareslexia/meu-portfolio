@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce - Store2Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="front.js" defer></script>
+</head>
+
+<body class="bodyEcommerce">
+    <div id="ecommerce">
+        <div class="headerEcommerce">
+            <h1 class="h1Ecommerce">Store2Dev</h1>
+            <p class="pEcommerce">Encontre os melhores produtos</p>
+            <div class="searchInput">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 21 21" fill="#000000">
+                    <g fill="none" fill-rule="evenodd" stroke="#000000" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="8.5" cy="8.5" r="5" />
+                        <path d="M17.571 17.5L12 12" />
+                    </g>
+                </svg>
+                <input type="text" class="searchInput" id="filterInput" placeholder="Pesquisar produtos...">
+            </div>
+
+        </div>
+
+        <div class="products" id="productsPage">
+            <div id="categoryBox"></div>
+            <div id="productCardContainer"></div>
+        </div>
+
+        <button class="botao-flutuante" id="botao-flutuante" onclick="openCart()"><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48" fill="#000000">
+                <g fill="none">
+                    <path d="M39 32H13L8 12h36l-5 20Z" />
+                    <path stroke="#f8f6fa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 6h3.5L8 12m0 0l5 20h26l5-20H8Z" />
+                    <circle cx="13" cy="39" r="3" stroke="#f8f6fa" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" />
+                    <circle cx="39" cy="39" r="3" stroke="#f8f6fa" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" />
+                </g>
+            </svg> <span id="cartCount" class="badge"></span></button>
+    </div>
+    <div class="carrinho" id="carrinho">
+        <div class="headerCarrinho">
+            <svg id="returnArrow" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32">
+                <path fill="#000000"
+                    d="m13.28 6.78l-8.5 8.5l-.686.72l.687.72l8.5 8.5l1.44-1.44L7.936 17H28v-2H7.937l6.782-6.78l-1.44-1.44z"
+                    onClick="openEcommerce()" />
+            </svg>
+            <div>
+                <h1 class="h1Ecommerce">Carrinho</h1>
+                <div class="pEcommerce" id="quantidadeProdutos"></div>
+            </div>
+        </div>
+        <div id="carrinhoCardContainer">
+        </div>
+        <div class="footerCarrinho" id="footerCarrinho">
+            <div class="totalCarrinho" id="totalCarrinho"></div>
+            <button class="createButton" id="buttonCreateOrder" onclick="createOrder()"> Fazer Pedido</button>
+
+        </div>
+
+        <div class="boxMensagem" id="pedidoCriado">
+            <div class="mensagem" id="mensagemSucessoPedidoCriado" style="display:none;">
+                <p>Pedido realizado com sucesso!</p>
+            </div>
+            <div class="mensagem" id="mensagemErroPedidoCriado" style="display:none;"></div>
+        </div>
+
+    </div>
+</body>
+
+
+</html>

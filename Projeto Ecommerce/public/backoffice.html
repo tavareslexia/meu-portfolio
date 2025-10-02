@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backoffice - Store2Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="front.js" defer></script>
+</head>
+
+<body>
+
+    <h1> Sistema de Gestão </h1>
+
+    <div class="windowBar">
+        <div class="buttonBox" id="buttonBoxCategory">
+            <button class="tab-btn active" id="categoriesButton" onclick="loadCategories()">Categorias</button>
+        </div>
+        <div class="buttonBox" id="buttonBoxProducts">
+            <button class="tab-btn" id="productsButton" onclick="loadProducts()">Produtos</button>
+        </div>
+        <div class="buttonBox" id="buttonBoxOrders">
+            <button class="tab-btn" id="ordersButton" onclick="getOrders()">Pedidos</button>
+        </div>
+    </div>
+
+    <div class="windowBox" id="categories">
+
+        <div class="headerCategories">
+            <h2> Categorias</h2>
+            <button class="createButton" onclick="newCategory()">
+                <svg id="plusIcon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 16 16"
+                    fill="#000000">
+                    <path fill="currentColor" d="M14 7H9V2H7v5H2v2h5v5h2V9h5V7z" />
+                </svg> Nova Categoria
+            </button>
+        </div>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>Nome </th>
+                    <th>Status</th>
+                    <th>Ações </th>
+                </tr>
+            </thead>
+            <tbody id="listaCategorias">
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="windowBox" id="products">
+        <div class="windowHeader">
+            <h2>Produtos</h2>
+            <button class="createButton" onclick="newProduct()">
+                <svg id="plusIcon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 16 16"
+                    fill="#000000">
+                    <path fill="currentColor" d="M14 7H9V2H7v5H2v2h5v5h2V9h5V7z" />
+                </svg> Novo Produto </button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>Nome </th>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="listaProdutos">
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="windowBox" id="orders">
+        <div class="windowHeader">
+            <h2>Pedidos</h2>
+            <button onclick="showFilter()" class="filterButton"> <svg id="filterIcon" xmlns="http://www.w3.org/2000/svg"
+                    width="15" height="15" viewBox="0 0 432 472" fill="#000000">
+                    <path fill="currentColor"
+                        d="m169 399l43 32q10 9 25 9q6 0 20-4q23-12 23-39V246L419 73q17-21 4-45q-15-25-38-25H47Q18 3 9 26q-10 26 4 45l139 175v119q0 22 17 34zM47 45h338L237 229v168l-42-32V229z" />
+                </svg>Filtros</button>
+        </div>
+        <div class="windowBox" id="filterBox">
+            <h2>Filtros</h2>
+            <div class="filterInputs">
+                <div class="filterInput">
+                    <p> Data Inicial</p>
+                    <input type="date" id="inputInitialDate">
+                </div>
+                <div class="filterInput">
+                    <p> Data Final</p>
+                    <input type="date" id="inputFinalDate">
+                </div>
+                <div class="filterInput">
+                    <p>Valor Mínimo</p>
+                    <input type="text" id="inputLowestValue" placeholder="R$" oninput="mascaraMoeda(event)">
+                </div>
+                <div class="filterInput">
+                    <p> Valor Máximo</p>
+                    <input type="text" id="inputHighestValue" placeholder="R$" oninput="mascaraMoeda(event)">
+                </div>
+
+            </div>
+            <div class="filterButtons">
+                <button class="filterButton" id="cleanFilter" onclick="cleanFilter()">Limpar Filtros</button>
+                <button class="createButton" id="cleanFilter" onclick="applyFilter()">Filtrar</button>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID </th>
+                    <th>Data e hora</th>
+                    <th>Qtde Itens</th>
+                    <th>Valor Total</th>
+                    <th>Detalhes</th>
+
+                </tr>
+            </thead>
+            <tbody id="listaPedidos">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="boxMensagem" id="boxMensagemCategoria">
+        <div class="mensagem" id="mensagemNovaCategoria">
+            <div class="headerCategories">
+                <h3>Nova Categoria</h3>
+                <button onclick="closeNewCategory()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                        viewBox="0 0 256 256">
+                        <path fill="#000000"
+                            d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z" />
+                    </svg></button>
+            </div>
+            <p>Nome:</p>
+            <input type="text" id="nomeNovaCategoria" placeholder="Digite o nome da categoria">
+            <div class="toggle">
+                <div id="statusNewCategory"> </div>
+                <label class="switch">
+                    <input type="checkbox" id="checkboxNewCategory" onclick="checkCategoryStatus()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button class="createButton" id="createNewCategoryButton" onclick="createCategory()">Criar
+                Categoria</button>
+
+        </div>
+    </div>
+
+    <div class="boxMensagem" id="boxMensagemAlterarCategoria">
+        <div class="mensagem" id="mensagemAlterarCategoria" style="display:none;">
+        </div>
+    </div>
+
+    <div class="boxMensagem" id="categoriaCriada">
+        <div class="mensagem" id="mensagemSucessoNovaCategoria" style="display:none;">
+            <h3>Categoria criada com sucesso!</h3>
+        </div>
+        <div class="mensagem" id="mensagemErroNovaCategoria" style="display:none;"></div>
+    </div>
+
+    <div class="boxMensagem" id="categoriaEditada">
+        <div class="mensagem" id="mensagemSucessoCategoriaEditada" style="display:none;">
+            <p>Categoria atualizada com sucesso!</p>
+        </div>
+        <div class="mensagem" id="mensagemErroCategoriaEditada" style="display:none;"></div>
+    </div>
+
+    <div class="boxMensagem" id="boxMensagemNovoProduto">
+        <div class="mensagem" id="mensagemNovoProduto">
+            <div class="headerCategories">
+                <h3>Novo Produto</h3>
+                <button onclick="closeNewProduct()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                        viewBox="0 0 256 256">
+                        <path fill="#000000"
+                            d="M205.66 194.34a8 8 0 0 1-11.32 11.32L128 139.31l-66.34 66.35a8 8 0 0 1-11.32-11.32L116.69 128L50.34 61.66a8 8 0 0 1 11.32-11.32L128 116.69l66.34-66.35a8 8 0 0 1 11.32 11.32L139.31 128Z" />
+                    </svg></button>
+            </div>
+            <p>Nome:</p>
+            <input type="text" id="nomeNovoProduto" placeholder="Digite o nome do produto:">
+
+            <p>Descrição:</p>
+            <input type="text" id="descricaoNovoProduto" placeholder="Digite a descrição do produto:">
+
+            <p>Categoria:</p>
+            <select class="quantityDropDown" id="categoriaNovoProduto">
+                <option value="">Selecione a categoria</option>
+            </select>
+
+            <p>Preço:</p>
+            <input type="text" id="precoNovoProduto" placeholder="R$ 0,00" oninput="mascaraMoeda(event)">
+
+            <p>Estoque:</p>
+            <input type="number" id="estoqueNovoProduto" placeholder="0">
+
+
+
+            <div class="toggle">
+                <div id="statusNewProduct"> </div>
+                <label class="switch">
+                    <input type="checkbox" id="checkboxNewProduct" onclick="checkProductStatus()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button class="createButton" id="createNewProductButton" onclick="createNewProduct()">Criar
+                Produto</button>
+
+        </div>
+    </div>
+
+    <div class="boxMensagem" id="produtoCriado">
+        <div class="mensagem" id="mensagemSucessoNovoProduto" style="display:none;">
+            <h3>Produto criado com sucesso!</h3>
+        </div>
+        <div class="mensagem" id="mensagemErroNovoProduto" style="display:none;"></div>
+    </div>
+
+    <div class="boxMensagem" id="boxMensagemAlterarProduto">
+        <div class="mensagem" id="mensagemAlterarProduto" style="display:none;">
+        </div>
+    </div>
+
+    <div class="boxMensagem" id="produtoEditado">
+        <div class="mensagem" id="mensagemSucessoProdutoEditado" style="display:none;">
+            <h3>Produto atualizado com sucesso!</h3>
+        </div>
+        <div class="mensagem" id="mensagemErroProdutoEditado" style="display:none;"></div>
+    </div>
+
+    <div class="boxMensagem" id="detalhesPedido">
+        <div class="mensagem" id="mensagemDetalhesPedido" style="display:none;">
+        </div>
+    </div>
+
+
+</body>
+
+</html>
